@@ -17,27 +17,31 @@
   [./mat_diff]
     type= CoefDiffusion
     variable = convected
-    coef = 0.1
+    coef = 1
     block = 'Surface1_TRI3'
   [../]
   [./vug_diff]
     type = CoefDiffusion
     variable = convected
-    coef = 0.9
+    coef = 1
     block = 'Surface2_TRI3'
   [../]
-
-  [./conv]
+  [./mat_conv]
     type = Convection
     variable = convected
-    velocity = '.1 0 0'
+    velocity = '0 0 0'
+    block = 'Surface1_TRI3'
   [../]
-  
+  [./vug_conv]
+    type = Convection
+    variable = convected
+    velocity = '0 0 0'
+    block = 'Surface2_TRI3'  
+  [../]
   [./compare]
     type = Diffusion
     variable = diffused
   [../]
-
   [./euler_diff]
     type = TimeDerivative
     variable = diffused
@@ -102,7 +106,6 @@
 []
 
 [Outputs]
-  execute_on = 'timestep_end'
-  exodus = true
+  csv = true
   checkpoint = true
 []

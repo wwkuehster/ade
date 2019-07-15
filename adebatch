@@ -1,0 +1,9 @@
+#!/bin/bash
+##SBATCH -n 12
+##SBATCH -p main
+##SBATCH --qos main
+#SBATCH -e errors.txt
+#SBATCH -o output.txt
+
+cd ~/projects/ade
+./ade-opt -i ade.i
